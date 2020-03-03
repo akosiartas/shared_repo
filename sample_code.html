@@ -1,0 +1,32 @@
+<div ng-controller='opsMap_controller'>
+    <div ng-controller='live_tracking_controller' ng-init="set_page_title('Live Map')">
+        <!-- <div id="opsMap" style="height: {{iframeHeight - 115}}px" ng-init='initMapBoxMap(initializeTracks)'></div> -->
+        <div ng-include="'./app/operations/mapping/map/templates/map.html'"></div>
+        <md-sidenav class="md-sidenav-right" md-component-id="closeEventsDisabled" md-whiteframe="4"
+            md-disable-close-events>
+            <md-toolbar layout="row" class="md-hue-3">
+                <div class="md-toolbar-tools">
+                    <span>Live Operation</span>
+                </div>
+            </md-toolbar>
+            <md-content layout-margin="">
+                <md-list flex>
+                    <md-list-item class="md-3-line" ng-repeat='recording in recordings track by $index'
+                        ng-click="">
+                        <div class="md-list-item-text" layout="column">
+                            <div layout="row">
+                                <div style="background-color: {{recording.color}};">
+                                    &nbsp;
+                                </div>
+                                <div style='width: 80%;'>
+                                    <div>{{recording.staff.name}}</div>
+                                    <div>Distance Traveled: {{recording.traveled_distance}} km</div>
+                                </div>
+                            </div>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+        </md-sidenav>
+    </div>
+</div>
